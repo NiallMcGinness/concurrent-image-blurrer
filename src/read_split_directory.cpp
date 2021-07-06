@@ -11,8 +11,7 @@ get_subsections(std::vector<std::string> fp_vect, int number_of_threads);
 
 int main() {
 
-  std::string data_dir = "test_ds/prime_number_997";
-  std::string data_dir_10 = "test_ds/dir_10";
+  std::string data_dir = "../test_data/10Items";
   std::string file_name, file_extension;
   std::vector<std::string> fp_vect = get_file_paths(data_dir);
   std::cout << fp_vect.size() << "\n";
