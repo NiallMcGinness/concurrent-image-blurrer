@@ -32,7 +32,7 @@ int main(){
 
         std::cout << "\nError : no 'data' directory found \n" << help_message() << "\n";
 
-        return 0;
+        //return 0;
     }
 
    
