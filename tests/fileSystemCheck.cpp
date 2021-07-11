@@ -24,11 +24,11 @@ int main(){
 
 */
 
-fs::path p = fs::current_path();
- 
-    std::cout << "The current path " << p << " decomposes into:\n"
-              << "root name " << p.root_name() << '\n'
-              << "root directory " << p.root_directory() << '\n'
-              << "relative path " << p.relative_path() << '\n';
+    fs::path project_root  = fs::current_path();
+    fs::path data_dir = project_root / "data";
+    std::cout << "project_root " << project_root << "\n"
+              << " data_dir  " << data_dir << '\n'
+              << "root directory " << project_root.root_directory() << '\n'
+              << "relative path " << project_root.relative_path() << '\n';
 
 }
