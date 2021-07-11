@@ -22,7 +22,7 @@ int main(){
 
 
     fs::path project_root  = fs::current_path();
-    fs::path data_dir = project_root / "data";
+    fs::path data_dir = project_root / "data2";
 
     bool data_dir_exists = fs::is_directory(data_dir);
 
@@ -31,6 +31,8 @@ int main(){
 
 
         std::cout << "\nError : no 'data' directory found \n" << help_message() << "\n";
+
+        return 0;
     }
 
    
