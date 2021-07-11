@@ -43,8 +43,13 @@ int main(){
 
     if (!data_dir_exists){
 
-        auto hm = help_message();
-        std::cout << hm << "\n";
+       // auto hm = help_message();
+
+       std::string s1 = "This string will be printed as the"
+                " one. You can include as many lines"
+                "as you wish. They will be concatenated";
+
+        std::cout << s1 << "\n";
     }
 
 }
