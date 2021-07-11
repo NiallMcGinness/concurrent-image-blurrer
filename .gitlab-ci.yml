@@ -1,0 +1,15 @@
+build:
+  stage: build
+    - mkdir build
+    - cd build
+    - cmake ..
+    - cmake --build .
+  artifacts:
+    paths:
+    - build
+
+test-job1:
+  stage: test
+  script:
+    - echo $PWD
+
