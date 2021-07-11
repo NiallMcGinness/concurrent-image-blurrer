@@ -19,10 +19,10 @@ std::vector<string> GetFiles::filesInDir(){
    auto fs_obj = fs::directory_iterator(this->directory_path);
 
    for (auto & p : fs_obj){
-        //fv.push_back(p);
+       
         auto p_obj = p.path();
         auto abs = fs::canonical(p).string();
-        //std::cout << "class instance " << abs  << "\n";
+        
         fv.push_back(abs);
    }
        

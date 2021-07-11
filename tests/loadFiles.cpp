@@ -27,20 +27,16 @@ string output_filepath(string input_filepath, string output_dir){
     std::cout << fn << std::endl;
     fs::path dst_dir = fs::path(output_dir);
 
-     std::cout << "Absolute path output dir " << dst_dir << " is " 
-              << std::filesystem::absolute(dst_dir) << '\n';
+   
     fs::path dst_pth = dst_dir / t;
-    std::cout << "destination path is " << dst_pth << std::endl;
-    std::cout << "Absolute path for " << dst_pth << " is " 
-              << std::filesystem::absolute(dst_pth) << '\n';
-
+  
     return dst_pth.string();
 
 }
 
 void dummy(std::vector<string> fl){
 
-    std::cout << fl.size() << std::endl;
+    std::cout << "number of files " << fl.size() << std::endl;
     Cv2utils cvu;
     string output_dir = "../test_data/output_10_items";
     for ( auto &f : fl) {
@@ -54,7 +50,7 @@ void dummy(std::vector<string> fl){
         
         string output_fp = output_filepath(f,output_dir);
 
-          std::filesystem::path p = output_fp;
+        std::filesystem::path p = output_fp;
         std::cout << "output filepath " << p << "\n";
 
          std::cout << "Absolute path for " << p << " is " 

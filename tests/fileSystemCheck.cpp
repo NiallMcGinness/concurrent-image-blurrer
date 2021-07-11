@@ -2,24 +2,21 @@
 #include <iostream>
 
 #include <vector>
-#include "../src/getfiles.h"
-#include "../src/cv2utils.h"
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/opencv.hpp>
+
 
 #include <filesystem>
 
 
 int main(){
 
-   std::string data_dir = "../test_data/input_10_items";
+   std::string data_dir = "data";
 
-   GetFiles gf(data_dir);
-   std::vector<string> fv = gf.filesInDir();
-   std::cout << fv.size() << std::endl;
-    uint number_of_threads = 5;
-    std::vector< std::vector<string> >  ci = gf.splitFileList(fv,number_of_threads);
-    std::cout << ci.size() << std::endl;
-     dummy(ci.at(0));
+   auto data_dir_path = std::filesystem::path(data_dir);
+
+   std::cout << "data directory relative path " << data_dir_path << std::endl;
+
+   auto abs_data_directory_path = std::filesystem::absolute(data_dir);
+
+   std::cout << "data directory absolute path " << data_dir_path << std::endl;
+
 }

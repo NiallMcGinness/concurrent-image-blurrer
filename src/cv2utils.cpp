@@ -13,8 +13,8 @@ Mat Cv2utils::loadFile(string f){
 
 Mat Cv2utils::medianBlur_k3(Mat src){
     Mat dst = Mat::zeros( src.size(), src.type() );
-    uint kernal_size = 3;
-     medianBlur( src, dst, kernal_size );
+    uint kernal_size = 5;
+    medianBlur( src, dst, kernal_size );
 
      return dst;
 }

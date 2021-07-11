@@ -1,5 +1,6 @@
 build:
   stage: build
+  script:
     - mkdir build
     - cd build
     - cmake ..
@@ -8,8 +9,25 @@ build:
     paths:
     - build
 
-test-job1:
+test-listDirs:
   stage: test
   script:
     - echo $PWD
+    - g++  tests/listDirectories.cpp -lstdc++fs -std=c++17 src/getFiles.cpp  -o listDirectories.bin 
+    - ./listDirectories.bin
+
+test-listDirsScript:
+  stage: test
+  script:
+    - echo $PWD
+    - ./tests/scripts/listDirectories.sh
+    - ./listDirectories.bin
+
+
+test-fs:
+  stage: test
+  script:
+    - echo $PWD
+    - ./tests/scripts/fileSystemCheck.sh
+    - ./fileSystemCheck.bin 
 

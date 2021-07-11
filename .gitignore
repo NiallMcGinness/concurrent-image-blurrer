@@ -35,7 +35,7 @@
 scraps/
 
 #Cmake 
-
+builds/
 
 CMakeLists.txt.user
 CMakeCache.txt

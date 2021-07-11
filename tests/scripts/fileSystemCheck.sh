@@ -1,0 +1,1 @@
+ g++  tests/fileSystemCheck.cpp -lstdc++fs -std=c++17 -o fileSystemCheck.bin 
