@@ -9,9 +9,9 @@
 
 int main(){
 
-   std::string data_dir = ".";
+   std::string data_dir = "../data";
 
-   std::filesystem::path data_dir_path = std::filesystem::path(data_dir);
+   std::filesystem::path data_dir_path = std::filesystem::path(data_dir).directory();
 
    std::cout << "data directory relative path " << data_dir_path << std::endl;
 
