@@ -8,7 +8,7 @@ namespace fs = std::filesystem;
 
 int main(){
 
-   std::string data_dir = "../test_data/input_10_items";
+   std::string data_dir = "test_data/input_10_items";
 
    std::cout<< data_dir << "\n";
 
