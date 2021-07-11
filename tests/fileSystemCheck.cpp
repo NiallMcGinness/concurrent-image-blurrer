@@ -11,7 +11,7 @@ int main(){
 
    std::string data_dir = ".";
 
-   auto data_dir_path = std::filesystem::path(data_dir);
+   std::filesystem::path data_dir_path = std::filesystem::path(data_dir);
 
    std::cout << "data directory relative path " << data_dir_path << std::endl;
 
