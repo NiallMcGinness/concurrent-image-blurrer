@@ -25,7 +25,7 @@ int main(){
 */
 
     fs::path project_root  = fs::current_path();
-    fs::path data_dir = project_root / "data2";
+    fs::path data_dir = project_root / "data";
 
     bool is_dir = fs::is_directory(data_dir);
     std::cout << "project_root " << project_root << "\n"
