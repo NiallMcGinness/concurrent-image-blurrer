@@ -9,7 +9,7 @@
 
 int main(){
 
-   std::string data_dir = "data/";
+   std::string data_dir = ".";
 
    auto data_dir_path = std::filesystem::path(data_dir);
 
