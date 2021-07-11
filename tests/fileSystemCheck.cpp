@@ -37,12 +37,12 @@ int main(){
     bool data_dir_exists = fs::is_directory(data_dir);
     std::cout << "project_root " << project_root << "\n"
               << " data_dir  " << data_dir << '\n'
-              << "data dir found ?  " << is_dir << '\n'
+              << "data dir found ?  " << data_dir_exists  << '\n'
               << "relative path " << project_root.relative_path() << '\n';
 
 
     if !(data_dir_exists){
-        std::cout << help_message() << "\n"
+        std::cout << help_message() << "\n";
     }
 
 }
