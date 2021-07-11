@@ -27,7 +27,7 @@ int main(){
     fs::path project_root  = fs::current_path();
     fs::path data_dir = project_root / "data2";
 
-    auto is_dir = fs::is_directory(data_dir);
+    bool is_dir = fs::is_directory(data_dir);
     std::cout << "project_root " << project_root << "\n"
               << " data_dir  " << data_dir << '\n'
               << "data dir found ?  " << is_dir << '\n'
