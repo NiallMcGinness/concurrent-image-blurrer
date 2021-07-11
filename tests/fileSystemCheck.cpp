@@ -9,8 +9,8 @@
 namespace fs = std::filesystem;
 
 
-String help_message(){
-    String help = "this program expects there to be a directory called 'data' in the directory you are running the program from\nand a subdirectory called 'input' containing the files to be processed\n"
+string help_message(){
+    string help = "this program expects there to be a directory called 'data' in the directory you are running the program from\nand a subdirectory called 'input' containing the files to be processed\n"
 
     return help;
 }
@@ -41,7 +41,7 @@ int main(){
               << "relative path " << project_root.relative_path() << '\n';
 
 
-    if !(data_dir_exists){
+    if (!data_dir_exists){
         std::cout << help_message() << "\n";
     }
 
