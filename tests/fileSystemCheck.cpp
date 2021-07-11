@@ -30,7 +30,7 @@ int main(){
     if (!data_dir_exists){
 
 
-        std::cout << help_message() << "\n";
+        std::cout << "\nError : no 'data' directory found \n" << help_message() << "\n";
     }
 
    
@@ -42,7 +42,7 @@ int main(){
     if (!input_dir_exists){
 
 
-        std::cout << help_message() << "\n";
+        std::cout << "\nError : no 'input' directory found \n" << help_message() << "\n";
     }
 
      std::cout << "project_root " << project_root << "\n"
