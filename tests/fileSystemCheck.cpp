@@ -42,7 +42,9 @@ int main(){
 
 
     if (!data_dir_exists){
-        std::cout << help_message() << "\n";
+
+        string hm = help_message();
+        std::cout << hm << "\n";
     }
 
 }
