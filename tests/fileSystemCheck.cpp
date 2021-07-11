@@ -10,7 +10,7 @@ namespace fs = std::filesystem;
 
 
 std::string help_message(){
-    std::string  help = "this program expects there to be a directory called 'data' in the directory you are running the program from\nand a subdirectory called 'input' containing the files to be processed\n"
+    std::string  help = "this program expects there to be a directory called 'data' in the directory you are running the program from\nand a subdirectory called 'input' containing the files to be processed\n";
 
     return help;
 }
