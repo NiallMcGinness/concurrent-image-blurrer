@@ -32,7 +32,7 @@ int main(){
 
         std::cout << "\nError : no 'data' directory found \n" << help_message() << "\n";
 
-        //return 0;
+        return 0;
     }
 
    
@@ -45,6 +45,8 @@ int main(){
 
 
         std::cout << "\nError : no 'input' directory found \n" << help_message() << "\n";
+
+         return 0;
     }
 
      std::cout << "project_root " << project_root << "\n"
