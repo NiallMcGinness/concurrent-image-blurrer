@@ -9,13 +9,6 @@ build:
     paths:
     - build
 
-test-listDirs:
-  stage: test
-  script:
-    - echo $PWD
-    - g++  tests/listDirectories.cpp -lstdc++fs -std=c++17 src/getFiles.cpp  -o listDirectories.bin 
-    - ./listDirectories.bin
-
 test-listDirsScript:
   stage: test
   script:
@@ -30,4 +23,11 @@ test-fs:
     - echo $PWD
     - ./tests/scripts/fileSystemCheck.sh
     - ./fileSystemCheck.bin 
+
+test-splitListByThread:
+  stage: test
+  script:
+    - ./tests/scripts/splitListByThread.sh
+    - ./splitListByThread.bin 
+
 
