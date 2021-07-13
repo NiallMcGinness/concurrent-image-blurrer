@@ -34,9 +34,9 @@
 
 scraps/
 
-#Cmake 
+#gitlab builds
 builds/
-
+#Cmake 
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
