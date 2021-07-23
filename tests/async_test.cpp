@@ -7,7 +7,7 @@ using namespace std;
 
 
 void print_thread(){
-    cout << "future run on thread " << this_thread::get_id() << 
+    cout << "future run on thread " << this_thread::get_id() << '\n';
 }
 
 
