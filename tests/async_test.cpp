@@ -6,8 +6,11 @@
 using namespace std;
 
 
-void print_thread(){
-    cout << "future run on thread " << this_thread::get_id() << '\n';
+int print_thread(){
+
+    int thread_id = this_thread::get_id();
+    cout << "future run on thread " << thread_id << '\n';
+    return thread_id;
 }
 
 
