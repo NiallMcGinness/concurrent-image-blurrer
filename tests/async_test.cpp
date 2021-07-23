@@ -1,6 +1,7 @@
 #include <future>
 #include <thread>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
