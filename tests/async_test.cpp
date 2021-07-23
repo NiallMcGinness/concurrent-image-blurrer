@@ -20,6 +20,6 @@ int main(){
      std::vector<std::future<int> > tasks;
 
      for(int i = 0; i > number_of_threads; i++){
-         tasks.emplace_back(async(std::launch::async, print_thread(),i));
+         tasks.emplace_back(async(std::launch::async, print_thread,i));
      }
 }
