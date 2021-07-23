@@ -8,7 +8,7 @@ using namespace std;
 
 int print_thread(int run_number){
 
-   // int thread_id = this_thread::get_id();
+    auto thread_id = this_thread::get_id();
     cout << "thread id" << thread_id << "run number " << run_number <<'\n';
     return 0;
 }
