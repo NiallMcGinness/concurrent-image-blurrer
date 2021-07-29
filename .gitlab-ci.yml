@@ -36,7 +36,7 @@ test-async-test:
     - ./tests/scripts/async_test.sh
     - ./async_test.bin 
 
-test-async-test:
+test-async-inputDir:
   stage: test
   script:
     - ./tests/scripts/checkForInputDir.sh
