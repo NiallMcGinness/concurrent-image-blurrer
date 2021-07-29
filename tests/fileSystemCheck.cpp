@@ -10,7 +10,7 @@ namespace fs = std::filesystem;
 
 
 std::string help_message(){
-      std::string help = "\nThis program expects there to be a directory called 'data'\n"
+      std::string help = "\nThis test program expects there to be a directory called 'data'\n"
                          "in the directory you are running the program from\n" 
                          "and a subdirectory called 'input' containing the files to be processed\n";
                 
@@ -22,7 +22,7 @@ int main(){
 
 
     fs::path project_root  = fs::current_path();
-    fs::path data_dir = project_root / "data2";
+    fs::path data_dir = project_root / "data";
 
     bool data_dir_exists = fs::is_directory(data_dir);
 

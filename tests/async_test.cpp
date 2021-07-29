@@ -6,20 +6,28 @@
 using namespace std;
 
 
-int print_thread(int run_number){
+thread::id print_thread(int run_number){
 
-    auto thread_id = this_thread::get_id();
+    thread::id thread_id = this_thread::get_id();
     cout << "thread id" << thread_id << "run number " << run_number <<'\n';
-    return 0;
+    return thread_id;
 }
 
 
 int main(){
      
      int number_of_threads = 4;
-     std::vector<std::future<int> > tasks;
+     std::vector<std::future<thread::id> > tasks;
+    {
+        for(int i = 0; i > number_of_threads; i++){
+            tasks.emplace_back(async(std::launch::async, print_thread,i));
+        }
 
-     for(int i = 0; i > number_of_threads; i++){
-         tasks.emplace_back(async(std::launch::async, print_thread,i));
-     }
+    }
+
+    for (auto& task : tasks){
+        cout << " taskresult  " << task.get() << "\n";
+    }
+
+     cout << " prog run  " << endl;
 }

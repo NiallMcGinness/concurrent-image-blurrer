@@ -1,0 +1,1 @@
+ g++  tests/checkForInputDir.cpp -lstdc++fs -std=c++17 -o  tests/bin/checkForInputDir.bin
