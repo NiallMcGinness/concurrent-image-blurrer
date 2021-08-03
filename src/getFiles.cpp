@@ -3,6 +3,7 @@
 #include <iostream>
 #include <filesystem>
 #include <vector>
+#include <set>
 
 namespace fs = std::filesystem;
 
@@ -23,10 +24,20 @@ std::vector<string> GetFiles::filesInDir(){
    std::vector<string> fv;
    auto fs_obj = fs::directory_iterator(this->input_dir_path);
 
+   set<std::string> accepted_file_ext = {".png", ".jpeg", ".jpg"};
+
    for (auto & p : fs_obj){
        
         auto p_obj = p.path();
-        std:cout << "file extention : " << p_obj.extension() << "\n";
+        
+        auto file_ext = p_obj.extension();
+
+        bool file_ext_ok = accepted_file_ext.contains(file_ext);
+        //std:cout << "file extention : " << file_ext << " is in accepted set : " << file_ext_ok << "\n";
+        
+        if(!file_ext_ok)
+            continue;
+
         auto abs = fs::canonical(p).string();
         
         fv.push_back(abs);
@@ -40,9 +51,14 @@ std::vector<string> GetFiles::filesInDir(){
 
 
  vector< vector<string> > GetFiles::splitFileList(vector<string> fv, uint number_of_threads){
-     uint number_of_files =  fv.size();
-
    
+
+   std::vector< std::vector<string> > c;
+
+   uint number_of_files =  fv.size();
+
+   if (number_of_files < 1 ) 
+        return c;
 
    if (number_of_threads < 1)
             number_of_threads = 1;
@@ -51,8 +67,8 @@ std::vector<string> GetFiles::filesInDir(){
             number_of_threads = number_of_files;
 
    uint files_per_thread = number_of_files / number_of_threads;
- 
-   std::vector< std::vector<string> > c;
+   
+   
    while (fv.size() > 0) {
 
        
