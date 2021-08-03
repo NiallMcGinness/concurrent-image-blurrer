@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <filesystem>
 
 #ifndef GETFILES_H_INCLUDED
 #define GETFILES_H_INCLUDED
@@ -13,10 +14,11 @@ class GetFiles {
 
     public:
 
-        GetFiles(string);
+        GetFiles(filesystem::path);
         vector<string> filesInDir();
         vector< vector<string> > splitFileList(vector<string>, uint);
-
+        bool input_output_dirs_exist();
+        
     private:
      string directory_path;
 

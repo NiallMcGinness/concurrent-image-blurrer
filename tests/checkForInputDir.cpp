@@ -5,6 +5,8 @@
 
 
 #include <filesystem>
+#include "../src/getfiles.h"
+
 
 namespace fs = std::filesystem;
 
@@ -18,39 +20,23 @@ std::string help_message(){
     return help;
 }
 
+
+
+
 int main(){
 
 
-
     fs::path project_root  = fs::current_path();
-    fs::path input_dir = project_root / "input";
+    GetFiles gf(project_root);
+   
+    bool dirs_exist = gf.input_output_dirs_exist();
 
-    bool input_dir_exists = fs::is_directory(input_dir);
+    if (!dirs_exist){
+         std::cout <<  help_message() << "\n";
 
-
-    if (!input_dir_exists){
-
-
-        std::cout << "\nError : no 'input' directory found in " << project_root << "\n";
-
-        std::cout <<  help_message() << "\n";
-
-        return 0;
+        return 1;
     }
 
-    std::cout << "\nproject_root dir : " << project_root << "\n";
-
-    fs::path output_dir = project_root / "output";
-
-    bool output_dir_exists = fs::is_directory(output_dir);
-
-
-    if (!output_dir_exists){
-
-        fs::create_directory(output_dir);
-        std::cout << "\noutput dir created : " << output_dir << "\n";
-    }
-
-
+    std::cout <<  dirs_exist  << "\n";
 
 }

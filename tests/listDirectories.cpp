@@ -16,7 +16,7 @@ int main(){
    GetFiles gf(data_dir);
    std::vector<string> fv = gf.filesInDir();
 
-     std::cout<< fv.size() << "\n";
+   std::cout<< fv.size() << "\n";
 
 
 }
