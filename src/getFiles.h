@@ -18,9 +18,12 @@ class GetFiles {
         vector<string> filesInDir();
         vector< vector<string> > splitFileList(vector<string>, uint);
         bool input_output_dirs_exist();
+        filesystem::path get_output_dir_path();
         
     private:
-     string directory_path;
+     filesystem::path directory_path;
+     filesystem::path input_dir_path;
+     filesystem::path output_dir_path;
 
 };
 

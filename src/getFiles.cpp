@@ -9,16 +9,24 @@ namespace fs = std::filesystem;
 
 GetFiles::GetFiles(fs::path directory_path){
     this->directory_path = directory_path;
+    this->input_dir_path = fs::path(directory_path / "input");
+    this->output_dir_path = fs::path(directory_path / "output");
+
+}
+
+fs::path GetFiles::get_output_dir_path(){
+    return this->output_dir_path;
 }
 
 std::vector<string> GetFiles::filesInDir(){
 
    std::vector<string> fv;
-   auto fs_obj = fs::directory_iterator(this->directory_path);
+   auto fs_obj = fs::directory_iterator(this->input_dir_path);
 
    for (auto & p : fs_obj){
        
         auto p_obj = p.path();
+        std:cout << "file extention : " << p_obj.extension() << "\n";
         auto abs = fs::canonical(p).string();
         
         fv.push_back(abs);
@@ -73,16 +81,15 @@ bool GetFiles::input_output_dirs_exist(){
     
    fs::path project_root_dir = this->directory_path;
     
-    
-    fs::path input_dir = project_root_dir  / "input";
 
-    bool input_dir_exists = fs::is_directory(input_dir);
+
+    bool input_dir_exists = fs::is_directory(this->input_dir_path);
 
 
     if (!input_dir_exists){
 
 
-        std::cout << "\nError : no 'input' directory found in " << project_root_dir << "\n";
+        std::cout << "\nError : no 'input' directory found in " << this->input_dir_path << "\n";
 
         std::string help = "\nThis program expects there to be a directory called 'input'\n"
                          "in the directory you are running the program from\n" 
@@ -95,21 +102,19 @@ bool GetFiles::input_output_dirs_exist(){
         return false;
     }
 
-    std::cout << "\nproject_root dir : " << project_root_dir << "\n";
+   
 
-    fs::path output_dir = project_root_dir / "output";
-
-    bool output_dir_exists = fs::is_directory(output_dir);
+    bool output_dir_exists = fs::is_directory(this->output_dir_path);
 
 
     if (!output_dir_exists){
 
-        fs::create_directory(output_dir);
+        fs::create_directory(this->output_dir_path);
        
     }
 
 
-    return ( fs::is_directory(input_dir) && fs::is_directory(output_dir) );
+    return ( fs::is_directory(this->input_dir_path) && fs::is_directory(this->output_dir_path) );
 
          
 
