@@ -33,12 +33,11 @@ std::vector<string> GetFiles::filesInDir(){
         auto file_ext = p_obj.extension();
 
         bool file_ext_ok = accepted_file_ext.contains(file_ext);
-        //std:cout << "file extention : " << file_ext << " is in accepted set : " << file_ext_ok << "\n";
         
         if(!file_ext_ok)
             continue;
 
-        auto abs = fs::canonical(p).string();
+        string abs = fs::canonical(p).string();
         
         fv.push_back(abs);
    }
