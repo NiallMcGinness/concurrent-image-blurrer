@@ -7,7 +7,7 @@ namespace fs = std::filesystem;
 
 
 std::vector< std::vector<string> > loop(std::vector<string> fv) {
-    uint number_of_files =  fv.size();
+   uint number_of_files =  fv.size();
 
    std::cout << number_of_files << std::endl;
 
