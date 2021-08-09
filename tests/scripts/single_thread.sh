@@ -1,1 +1,1 @@
-g++  tests/single_thread.cpp -lstdc++fs -std=c++20 src/getFiles.cpp  -o tests/bin/single_thread.bin 
+g++  tests/single_thread.cpp -lstdc++fs -std=c++20 src/getFiles.cpp src/cv2utils.cpp  -o tests/bin/single_thread.bin 
