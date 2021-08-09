@@ -6,10 +6,12 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/opencv.hpp>
-
+#include <future>
 #include <filesystem>
 #include "../src/getfiles.h"
 #include "../src/cv2utils.h"
+
+#include <chrono>
 
 namespace fs = std::filesystem;
 
@@ -39,7 +41,8 @@ int main(){
 
     std::vector<string> input_files_vec =  gf.filesInDir();
 
-    uint number_of_threads = 2;
+   uint number_of_threads = 5;
+   std::cout <<  "number_of_threads   : " << number_of_threads    << "\n";
 
     vector< vector<string> > file_blocks =  gf.splitFileList(input_files_vec, number_of_threads);
     
@@ -49,37 +52,35 @@ int main(){
     }
 
     fs::path output_dir_path = gf.get_output_dir_path();
-
-    for ( auto &file_block : file_blocks){
-       
-       process_file_list(file_block,output_dir_path);
-
-    }
     
-  /* vector<string> file_list = file_blocks.at(0);
    
-   process_file_list(file_list,gf);
-
- */
-
+    for ( auto &file_block : file_blocks){
+  
+          async(std::launch::async,process_file_list,file_block,output_dir_path);
+    }
+   
 }
 
 
 void process_file_list(vector<string> file_list, fs::path output_dir_path){
 
-    
+    auto number_of_files = file_list.size(); 
 
- 
+    auto start = std::chrono::high_resolution_clock::now();
     for ( auto &file_path : file_list){
 
         fs::path file_name = fs::path(file_path).filename();
         fs::path output_filepath = output_dir_path / file_name;
 
         string output_filepath_string =  output_filepath.string();
-        std::cout <<  "output file string path   : " << output_filepath_string   << "\n";
+       // std::cout <<  "output file string path   : " << output_filepath_string   << "\n";
         load_and_process_image(file_path, output_filepath);
 
     }
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+
+    cout << number_of_files << " files processed in " << duration.count() << " ms  \n";
 }
 
 
