@@ -15,11 +15,20 @@
 
 namespace fs = std::filesystem;
 
+bool image_blurrer(uint);
 void process_file_list(vector<string>, fs::path);
 void load_and_process_image(string, string);
 
 int main() {
+  uint number_of_threads = 5;
+  uint number_of_cycles = 5;
 
+  for (int i = 0; i < number_of_cycles; i++) {
+    bool run_success = image_blurrer(number_of_threads);
+  }
+}
+
+bool image_blurrer(uint number_of_threads) {
   fs::path project_root = fs::current_path();
   GetFiles gf(project_root);
 
@@ -29,19 +38,18 @@ int main() {
     std::cout << "input / output dirs do not exist, exiting  program"
               << "\n";
 
-    return 1;
+    return false;
   }
 
   std::vector<string> input_files_vec = gf.filesInDir();
 
-  uint number_of_threads = 5;
   std::cout << "number_of_threads   : " << number_of_threads << "\n";
 
   vector<vector<string>> file_blocks =
       gf.splitFileList(input_files_vec, number_of_threads);
 
   if (file_blocks.size() < 1) {
-    return 1;
+    return false;
   }
 
   fs::path output_dir_path = gf.get_output_dir_path();
@@ -50,6 +58,8 @@ int main() {
 
     async(std::launch::async, process_file_list, file_block, output_dir_path);
   }
+
+  return true;
 }
 
 void process_file_list(vector<string> file_list, fs::path output_dir_path) {
