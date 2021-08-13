@@ -1,0 +1,1 @@
+g++  tests/cli_parser.cpp  -std=c++20 -o tests/bin/cli_parser.bin 
