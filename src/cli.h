@@ -6,8 +6,8 @@
 namespace cli {
 
 struct cli_values {
-  int threads;
-  int cycles;
+  uint threads;
+  uint cycles;
 };
 
 cli_values parse_cli(int argc, char *argv[]) {
@@ -16,19 +16,19 @@ cli_values parse_cli(int argc, char *argv[]) {
   try {
     cxxopts::Options options("concurrent image blurrer", "cli flag parser");
     options.add_options()("t,threads", "number of threads to run program",
-                          cxxopts::value<int>())(
-        "c,cycles", "number of cycles to run", cxxopts::value<int>());
+                          cxxopts::value<uint>())(
+        "c,cycles", "number of cycles to run", cxxopts::value<uint>());
 
     const auto result = options.parse(argc, argv);
 
     if (result.count("threads")) {
-      int threads_flag = result["threads"].as<int>();
+      uint threads_flag = result["threads"].as<uint>();
 
       cli_vals.threads = threads_flag;
     }
 
     if (result.count("cycles")) {
-      int cycles_flag = result["cycles"].as<int>();
+      uint cycles_flag = result["cycles"].as<uint>();
 
       cli_vals.cycles = cycles_flag;
     }
