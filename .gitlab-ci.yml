@@ -5,6 +5,8 @@ build:
     - cd build
     - cmake ..
     - cmake --build .
+    - ./tests/bin/bin.app
+    - ./tests/bin/bin.app --threads=2 --cycles=2
   artifacts:
     paths:
     - build
