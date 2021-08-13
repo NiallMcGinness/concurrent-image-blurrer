@@ -1,4 +1,4 @@
-#include "getfiles.h"
+#include "getFiles.h"
 #include <filesystem>
 #include <iostream>
 #include <set>
@@ -7,7 +7,8 @@
 
 namespace fs = std::filesystem;
 
-GetFiles::GetFiles(fs::path directory_path) {
+GetFiles::GetFiles(fs::path directory_path)
+{
   this->directory_path = directory_path;
   this->input_dir_path = fs::path(directory_path / "input");
   this->output_dir_path = fs::path(directory_path / "output");
@@ -15,14 +16,16 @@ GetFiles::GetFiles(fs::path directory_path) {
 
 fs::path GetFiles::get_output_dir_path() { return this->output_dir_path; }
 
-std::vector<std::string> GetFiles::filesInDir() {
+std::vector<std::string> GetFiles::filesInDir()
+{
 
   std::vector<string> fv;
   auto fs_obj = fs::directory_iterator(this->input_dir_path);
 
   set<std::string> accepted_file_ext = {".png", ".jpeg", ".jpg"};
 
-  for (auto &p : fs_obj) {
+  for (auto &p : fs_obj)
+  {
 
     auto p_obj = p.path();
 
@@ -42,7 +45,8 @@ std::vector<std::string> GetFiles::filesInDir() {
 }
 
 vector<vector<std::string>> GetFiles::splitFileList(vector<std::string> fv,
-                                                    uint number_of_threads) {
+                                                    uint number_of_threads)
+{
 
   std::vector<std::vector<std::string>> c;
 
@@ -59,17 +63,19 @@ vector<vector<std::string>> GetFiles::splitFileList(vector<std::string> fv,
 
   uint files_per_thread = number_of_files / number_of_threads;
 
-  while (fv.size() > 0) {
+  while (fv.size() > 0)
+  {
 
-    if (fv.size() > files_per_thread) {
+    if (fv.size() > files_per_thread)
+    {
       std::vector<string> sl(fv.begin(), fv.begin() + files_per_thread);
 
       c.push_back(sl);
       fv.erase(fv.begin(), fv.begin() + files_per_thread);
-
     }
 
-    else {
+    else
+    {
 
       c.push_back(fv);
       fv.clear();
@@ -79,13 +85,15 @@ vector<vector<std::string>> GetFiles::splitFileList(vector<std::string> fv,
   return c;
 }
 
-bool GetFiles::input_output_dirs_exist() {
+bool GetFiles::input_output_dirs_exist()
+{
 
   fs::path project_root_dir = this->directory_path;
 
   bool input_dir_exists = fs::is_directory(this->input_dir_path);
 
-  if (!input_dir_exists) {
+  if (!input_dir_exists)
+  {
 
     std::cout << "\nError : no 'input' directory found in "
               << this->input_dir_path << "\n";
@@ -104,7 +112,8 @@ bool GetFiles::input_output_dirs_exist() {
 
   bool output_dir_exists = fs::is_directory(this->output_dir_path);
 
-  if (!output_dir_exists) {
+  if (!output_dir_exists)
+  {
 
     fs::create_directory(this->output_dir_path);
   }

@@ -33,7 +33,7 @@ input/
 *.out
 *.app
 
-
+build/
 scraps/
 
 #gitlab builds

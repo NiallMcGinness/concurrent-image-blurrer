@@ -12,7 +12,7 @@
 #include <filesystem>
 
 #include "cv2utils.h"
-#include "getfiles.h"
+#include "getFiles.h"
 #include <chrono>
 #include <future>
 
@@ -22,25 +22,29 @@ bool image_blurrer(uint);
 void process_file_list(vector<std::string>, GetFiles);
 void load_and_process_image(std::string, std::string);
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 
   cli::cli_values cli_vals = cli::parse_cli(argc, argv);
 
   cout << "cli vals\nthreads : " << cli_vals.threads
        << "\ncycles : " << cli_vals.cycles << endl;
 
-  for (int i = 0; i < cli_vals.cycles; i++) {
+  for (int i = 0; i < cli_vals.cycles; i++)
+  {
     bool run_success = image_blurrer(cli_vals.threads);
   }
 }
 
-bool image_blurrer(uint number_of_threads) {
+bool image_blurrer(uint number_of_threads)
+{
   fs::path project_root = fs::current_path();
   GetFiles gf(project_root);
 
   bool dirs_exist = gf.input_output_dirs_exist();
 
-  if (!dirs_exist) {
+  if (!dirs_exist)
+  {
     std::cout << "input / output dirs do not exist, exiting  program"
               << "\n";
 
@@ -54,13 +58,15 @@ bool image_blurrer(uint number_of_threads) {
   vector<vector<std::string>> file_blocks =
       gf.splitFileList(input_files_vec, number_of_threads);
 
-  if (file_blocks.size() < 1) {
+  if (file_blocks.size() < 1)
+  {
     return false;
   }
 
   fs::path output_dir_path = gf.get_output_dir_path();
 
-  for (auto &file_block : file_blocks) {
+  for (auto &file_block : file_blocks)
+  {
 
     async(std::launch::async, process_file_list, file_block, output_dir_path);
   }
@@ -68,11 +74,13 @@ bool image_blurrer(uint number_of_threads) {
   return true;
 }
 
-void process_file_list(vector<std::string> file_list, GetFiles gf) {
+void process_file_list(vector<std::string> file_list, GetFiles gf)
+{
 
   fs::path output_dir_path = gf.get_output_dir_path();
 
-  for (auto &file_path : file_list) {
+  for (auto &file_path : file_list)
+  {
 
     fs::path file_name = fs::path(file_path).filename();
     fs::path output_filepath = output_dir_path / file_name;
@@ -85,7 +93,8 @@ void process_file_list(vector<std::string> file_list, GetFiles gf) {
 }
 
 void load_and_process_image(std::string input_filepath,
-                            std::string output_filepath) {
+                            std::string output_filepath)
+{
 
   Cv2utils cvu;
   cv::Mat img = cvu.loadFile(input_filepath);
