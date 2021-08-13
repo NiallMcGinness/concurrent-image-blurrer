@@ -30,16 +30,17 @@ test-splitListByThread:
     - ./tests/scripts/splitListByThread.sh
     - ./splitListByThread.bin 
 
-test-async-test:
-  stage: test
-  script:
-    - ./tests/scripts/async_test.sh
-    - ./async_test.bin 
-
 test-async-inputDir:
   stage: test
   script:
     - ./tests/scripts/checkForInputDir.sh
     - ./tests/bin/checkForInputDir.bin 
+
+test-cliparse:
+  stage: test
+  script:
+    - ./tests/scripts/cli_parser.sh
+    - ./tests/bin/cli_parser.bin
+    - ./tests/bin/cli_parser.bin --threads=2 --cycles=6
 
 
