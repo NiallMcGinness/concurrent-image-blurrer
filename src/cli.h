@@ -12,7 +12,7 @@ namespace cli
     uint cycles;
   };
 
-  string help_message()
+  std::string help_message()
   {
 
     string msg = "This prgram scans png or jpeg files in a directory called 'input', processes each file, blurring the image before saving the resultto an output folder\n"
@@ -41,7 +41,7 @@ namespace cli
         cli_vals.threads = 0;
         cli_vals.cycles = 0;
 
-        string help_msg = help_message();
+        std::string help_msg = help_message();
         std::cout << help_msg << std::endl;
       }
 
