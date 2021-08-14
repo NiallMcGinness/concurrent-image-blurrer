@@ -15,7 +15,7 @@ namespace cli
   std::string help_message()
   {
 
-    std::string msg = "This prgram scans png or jpeg files in a directory called 'input', processes each file, blurring the image before saving the resultto an output folder\n"
+    std::string msg = "This program scans png or jpeg files in a directory called 'input', processes each file, blurring the image before saving the resultto an output folder\n"
                       "It can accept two flags, --threads and --cycles\n"
                       "if no flags are enterted both values default to 1\n";
 
