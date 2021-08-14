@@ -5,13 +5,20 @@ build:
     - cd build
     - cmake ..
     - cmake --build .
-    - cd ..
-    - ./tests/scripts/download_10_test_images.sh
-    - ./tests/bin/bin.app
-    - ./tests/bin/bin.app --threads=2 --cycles=2
   artifacts:
     paths:
     - build
+
+test-build:
+  script:
+      - mkdir build
+      - cd build
+      - cmake ..
+      - cmake --build .
+      - cd ..
+      - ./tests/scripts/download_10_test_images.sh
+      - ./tests/bin/bin.app
+      - ./tests/bin/bin.app --threads=2 --cycles=2
 
 test-listDirsScript:
   stage: test
