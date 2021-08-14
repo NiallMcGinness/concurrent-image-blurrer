@@ -41,7 +41,7 @@ namespace cli
         cli_vals.threads = 0;
         cli_vals.cycles = 0;
 
-        string help_msg - help_message();
+        string help_msg = help_message();
         std::cout << help_msg << std::endl;
       }
 
