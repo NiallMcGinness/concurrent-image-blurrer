@@ -51,7 +51,7 @@ test-cliparse:
   stage: test
   script:
     - ./tests/scripts/cli_parser.sh
-    - ./tests/bin/cli_parser.bin ?
+    - ./tests/bin/cli_parser.bin --help
     - ./tests/bin/cli_parser.bin --threads=2 --cycles=6
 
 
