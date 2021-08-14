@@ -101,7 +101,7 @@ bool GetFiles::input_output_dirs_exist()
     std::string help =
         "\nThis program expects there to be a directory called 'input'\n"
         "in the directory you are running the program from\n"
-        "which contains the filesto be processed\n"
+        "which contains the files to be processed\n"
         "once processed an output directory will be created containing the "
         "processed files";
 
