@@ -42,7 +42,7 @@ namespace cli
         cli_vals.cycles = 0;
 
         string help_msg - help_message();
-        std::cout << help_msg << endl;
+        std::cout << help_msg << std::endl;
       }
 
       if (result.count("threads"))
