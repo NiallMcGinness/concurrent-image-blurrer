@@ -31,7 +31,7 @@ namespace cli
       cxxopts::Options options("concurrent image blurrer", "cli flag parser");
       options.add_options()("t,threads", "number of threads to run program",
                             cxxopts::value<uint>())(
-          "c,cycles", "number of cycles to run", cxxopts::value<uint>())("h,help", "Print usage");
+          "c,cycles", "number of cycles to run", cxxopts::value<uint>())("?,help", "Print usage");
 
       const auto result = options.parse(argc, argv);
 
