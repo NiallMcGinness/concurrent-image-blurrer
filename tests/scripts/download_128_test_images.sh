@@ -2,7 +2,6 @@
 
 mkdir -p input
 
-for i in {0..127}
-do
-wget 'https://appctl-test-images-public.s3.us-west-2.amazonaws.com/img/dataset_1-img-'$i'.png' -P input/
-done
+wget https://appctl-test-images-public.s3.us-west-2.amazonaws.com/img/test_data_128_items.tar.gz
+
+tar -xf test_data_128_items.tar.gz -C input/
