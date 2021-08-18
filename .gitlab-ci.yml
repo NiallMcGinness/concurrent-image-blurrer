@@ -19,6 +19,7 @@ test-build:
       - ./tests/scripts/download_10_test_images.sh
       - ./tests/bin/bin.app
       - ./tests/bin/bin.app --threads=2 --cycles=2
+      - ls output | wc -l
 
 test-listDirsScript:
   stage: test
