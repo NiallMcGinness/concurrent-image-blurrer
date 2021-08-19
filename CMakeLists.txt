@@ -14,7 +14,7 @@ list(REMOVE_DUPLICATES Foo_INCLUDE_DIRS)
 
 include_directories( ${OpenCV_INCLUDE_DIRS} src)
 
-add_executable(bin.app src/main.cpp ${Foo_SOURCES})
+add_executable(../tests/bin/bin.app src/main.cpp ${Foo_SOURCES})
 
 #target_link_libraries(bin.app -static stdc++fs)
-target_link_libraries(bin.app  -pthread stdc++fs ${OpenCV_LIBS} )
+target_link_libraries(../tests/bin/bin.app  -pthread stdc++fs ${OpenCV_LIBS} )
